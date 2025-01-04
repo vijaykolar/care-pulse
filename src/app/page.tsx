@@ -9,7 +9,7 @@ export default function Home() {
             src="/assets/icons/logo-full.svg"
             height={1000}
             width={1000}
-            alt="Patient Care"
+            alt="Patient Care!!"
             className="h-10"
           />
         </div>
