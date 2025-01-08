@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const formSchema = z.object({
+export const UserFormValidation = z.object({
   name: z.string().min(2, {
     message: "name must be at least 2 characters.",
   }),
@@ -8,7 +8,10 @@ export const formSchema = z.object({
   email: z.string().email({
     message: "Please enter a valid email address.",
   }),
-  phone: z.string().min(6, {
-    message: "Please enter a valid phone number.",
-  }),
+  phone: z
+    .string()
+    // .max(13)
+    .refine((value) => /^\+?[1-9]\d{1,14}$/.test(value), {
+      message: "Please enter a valid phone number.",
+    }),
 });

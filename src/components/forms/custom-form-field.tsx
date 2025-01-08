@@ -16,6 +16,7 @@ import { Textarea } from "../ui/textarea";
 import { Checkbox } from "../ui/checkbox";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
+import { E164Number } from "libphonenumber-js/core";
 
 const RenderField = ({
   field,
@@ -87,7 +88,7 @@ const RenderField = ({
             placeholder={props.placeholder}
             international
             withCountryCallingCode
-            value={field.value as undefined}
+            value={field.value as E164Number | undefined}
             onChange={field.onChange}
             className="input-phone"
 

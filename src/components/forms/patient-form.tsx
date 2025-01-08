@@ -7,24 +7,46 @@ import { Button } from "../ui/button";
 import { Form } from "../ui/form";
 import { CustomFormField } from "./custom-form-field";
 import { FormFieldType } from "./types";
-import { formSchema } from "@/lib/validations";
+import { UserFormValidation } from "@/lib/validations";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { SubmitButton } from "../SubmitButton";
 
 const PatientForm: React.FC = () => {
   const router = useRouter();
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const [isLoading, setIsLoading] = useState(false);
+  const form = useForm<z.infer<typeof UserFormValidation>>({
+    resolver: zodResolver(UserFormValidation),
     defaultValues: {
-      name: "",
-      email: "",
-      phone: "",
+      name: "Vijay",
+      email: "vijay@gmail.com",
+      phone: "+919980175567",
     },
   });
-  function onSubmit(values: z.infer<typeof formSchema>) {
+
+  function onSubmit(values: z.infer<typeof UserFormValidation>) {
     // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    router.push("/success");
-    console.log(values);
+    setIsLoading(true);
+    const { name, email, phone } = values;
+    try {
+      const user = {
+        name,
+        email,
+        phone,
+      };
+
+      console.log(user);
+
+      // const newUser = await createUser(user);
+
+      // if (newUser) {
+      //   router.push(`/patients/${newUser.$id}/register`);
+      // }
+    } catch (error) {
+      console.log(error);
+    }
+
+    setIsLoading(false);
   }
 
   return (
@@ -37,7 +59,6 @@ const PatientForm: React.FC = () => {
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <CustomFormField
             control={form?.control}
-            // label="Full Name"
             placeholder="Enter your full name"
             name="name"
             fieldType={FormFieldType.INPUT}
@@ -48,7 +69,6 @@ const PatientForm: React.FC = () => {
             fieldType={FormFieldType.INPUT}
             control={form?.control}
             name="email"
-            // label="Email Address"
             placeholder="Enter your email"
             iconSrc="/assets/icons/email.svg"
             iconAlt="Email Icon"
@@ -57,34 +77,9 @@ const PatientForm: React.FC = () => {
             fieldType={FormFieldType.PHONE_INPUT}
             control={form?.control}
             name="phone"
-            // label="Email Address"
             placeholder="Enter your phone number"
           />
-          {/* <CustomFormField
-            control={form?.control}
-            label="Password"
-            placeholder="d"
-            name="password"
-            fieldType={FormFieldType.password}
-            iconSrc="/assets/icons/user.svg"
-            iconAlt="User Icon"
-          /> */}
-          {/* <CustomFormField
-            control={form?.control}
-            label="Password"
-            placeholder="password"
-            name="password"
-            fieldType={FormFieldType.TEXTAREA}
-          /> */}
-          {/* <CustomFormField
-          control={form?.control}
-          label="Password"
-          placeholder="password"
-          name="password"
-          fieldType={FormFieldType.SKELETON}
-          //   type="password"
-        /> */}
-          <Button type="submit">Submit</Button>
+          <SubmitButton isLoading={isLoading}>Get started</SubmitButton>
         </form>
       </Form>
     </>
