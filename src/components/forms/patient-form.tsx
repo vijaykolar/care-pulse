@@ -11,6 +11,7 @@ import { UserFormValidation } from "@/lib/validations";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { SubmitButton } from "../SubmitButton";
+import { createUser } from "@/lib/actions/patient.actions";
 
 const PatientForm: React.FC = () => {
   const router = useRouter();
@@ -24,7 +25,7 @@ const PatientForm: React.FC = () => {
     },
   });
 
-  function onSubmit(values: z.infer<typeof UserFormValidation>) {
+  async function onSubmit(values: z.infer<typeof UserFormValidation>) {
     // Do something with the form values.
     setIsLoading(true);
     const { name, email, phone } = values;
@@ -35,13 +36,11 @@ const PatientForm: React.FC = () => {
         phone,
       };
 
-      console.log(user);
+      const newUser = await createUser(user);
 
-      // const newUser = await createUser(user);
-
-      // if (newUser) {
-      //   router.push(`/patients/${newUser.$id}/register`);
-      // }
+      if (newUser) {
+        router.push(`/patients/${newUser.$id}/register`);
+      }
     } catch (error) {
       console.log(error);
     }
