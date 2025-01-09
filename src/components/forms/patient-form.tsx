@@ -19,9 +19,9 @@ const PatientForm: React.FC = () => {
   const form = useForm<z.infer<typeof UserFormValidation>>({
     resolver: zodResolver(UserFormValidation),
     defaultValues: {
-      name: "Vijay",
-      email: "vijay@gmail.com",
-      phone: "+919980175567",
+      name: "",
+      email: "",
+      phone: "",
     },
   });
 
