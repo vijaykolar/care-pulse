@@ -326,7 +326,7 @@
 
   /* =====  REACT DATE PICKER OVERRIDES */
   .date-picker {
-    @apply overflow-hidden border-transparent w-full placeholder:text-dark-600  h-11 text-14-medium rounded-md px-3 outline-none !important;
+    @apply overflow-hidden border-transparent w-full placeholder:text-dark-600  h-[46px] text-14-medium rounded-md px-3 outline-none !important;
   }
 }
 
@@ -409,4 +409,9 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.react-datepicker__day--keyboard-selected {
+  /* border: 1px solid red; */
+  @apply bg-green-500 text-white !important;
 }
