@@ -99,7 +99,7 @@ export const RegisterForm: React.FC<{ user: User }> = ({ user }) => {
   return (
     <>
       <section className="mb-12 space-y-2">
-        <h1 className="header">Welcome👋</h1>
+        <h1 className="header">Welcome {user?.name || ""}👋</h1>
         <p className="text-dark-700">Let us know more about yourself</p>
       </section>
       <Form {...form}>
