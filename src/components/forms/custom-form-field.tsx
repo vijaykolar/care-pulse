@@ -92,7 +92,7 @@ const RenderField = ({
       );
     case FormFieldType.PHONE_INPUT:
       return (
-        <FormControl>
+        <FormControl {...field} className="disabled:opacity-50">
           <PhoneInput
             defaultCountry="IN"
             placeholder={props.placeholder}
@@ -100,7 +100,14 @@ const RenderField = ({
             withCountryCallingCode
             value={field.value as E164Number | undefined}
             onChange={field.onChange}
-            className="input-phone"
+            className={`input-phone `}
+            inputComponent={(props) => (
+              <Input
+                {...props}
+                className="shad-input border-0"
+                disabled={field.disabled}
+              />
+            )}
           />
         </FormControl>
       );
@@ -170,8 +177,8 @@ export const CustomFormField = (props: CustomFormFieldProps) => {
   return (
     <div>
       <FormField
-        control={control}
         name={name!}
+        {...props}
         render={({ field }) => (
           <FormItem className="flex-1">
             {fieldType !== FormFieldType.CHECKBOX && label && (

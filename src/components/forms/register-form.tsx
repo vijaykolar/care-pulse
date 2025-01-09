@@ -6,7 +6,10 @@ import { z } from "zod";
 import { Form, FormControl } from "../ui/form";
 import { CustomFormField } from "./custom-form-field";
 import { FormFieldType } from "./types";
-import { UserFormValidation } from "@/lib/validations";
+import {
+  PatientRegisterValidation,
+  UserFormValidation,
+} from "@/lib/validations";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { SubmitButton } from "../SubmitButton";
@@ -15,48 +18,82 @@ import {
   Doctors,
   GenderOptions,
   IdentificationTypes,
+  PatientFormDefaultValues,
 } from "../../../constants";
 import { Label } from "../ui/label";
 import { SelectItem } from "../ui/select";
 import Image from "next/image";
 import { FileUploader } from "../file-uploader";
+import { registerPatient } from "@/lib/actions/patient.actions";
 
 export const RegisterForm: React.FC<{ user: User }> = ({ user }) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
-  const form = useForm<z.infer<typeof UserFormValidation>>({
-    resolver: zodResolver(UserFormValidation),
+  const form = useForm<z.infer<typeof PatientRegisterValidation>>({
+    resolver: zodResolver(PatientRegisterValidation),
     defaultValues: {
-      name: "",
-      email: "",
-      phone: "",
-      //   birthDate: new Date(),
-      //   gender: "Male",
+      ...PatientFormDefaultValues,
+      name: user.name,
+      email: user.email,
+      phone: user.phone,
     },
   });
 
-  async function onSubmit(values: z.infer<typeof UserFormValidation>) {
+  async function onSubmit(values: z.infer<typeof PatientRegisterValidation>) {
     // Do something with the form values.
     console.log(values);
 
-    // setIsLoading(true);
-    // const { name, email, phone } = values;
-    // try {
-    //   const user = {
-    //     name,
-    //     email,
-    //     phone,
-    //   };
+    let formData;
+    if (
+      values.identificationDocument &&
+      values.identificationDocument?.length > 0
+    ) {
+      const blobFile = new Blob([values.identificationDocument[0]], {
+        type: values.identificationDocument[0].type,
+      });
 
-    //   const newUser = await createUser(user);
+      formData = new FormData();
+      formData.append("blobFile", blobFile);
+      formData.append("fileName", values.identificationDocument[0].name);
+    }
 
-    //   if (newUser) {
-    //     router.push(`/patients/${newUser.$id}/register`);
-    //   }
-    // } catch (error) {
-    //   console.log(error);
-    // }
-    // setIsLoading(false);
+    try {
+      const patient = {
+        userId: user.$id,
+        name: values.name,
+        email: values.email,
+        phone: values.phone,
+        birthDate: new Date(values.birthDate),
+        gender: values.gender,
+        address: values.address,
+        occupation: values.occupation,
+        emergencyContactName: values.emergencyContactName,
+        emergencyContactNumber: values.emergencyContactNumber,
+        primaryPhysician: values.primaryPhysician,
+        insuranceProvider: values.insuranceProvider,
+        insurancePolicyNumber: values.insurancePolicyNumber,
+        allergies: values.allergies,
+        currentMedication: values.currentMedication,
+        familyMedicalHistory: values.familyMedicalHistory,
+        pastMedicalHistory: values.pastMedicalHistory,
+        identificationType: values.identificationType,
+        identificationNumber: values.identificationNumber,
+        identificationDocument: values.identificationDocument
+          ? formData
+          : undefined,
+        privacyConsent: values.privacyConsent,
+      };
+
+      const newPatient = await registerPatient(patient);
+
+      if (newPatient) {
+        router.push(`/patients/${user.$id}/new-appointment`);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
+    setIsLoading(false);
   }
 
   return (
