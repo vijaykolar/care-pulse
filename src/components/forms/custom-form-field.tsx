@@ -92,7 +92,7 @@ const RenderField = ({
       );
     case FormFieldType.PHONE_INPUT:
       return (
-        <FormControl {...field} className="disabled:opacity-50">
+        <FormControl className="disabled:opacity-50">
           <PhoneInput
             defaultCountry="IN"
             placeholder={props.placeholder}
@@ -101,13 +101,6 @@ const RenderField = ({
             value={field.value as E164Number | undefined}
             onChange={field.onChange}
             className={`input-phone `}
-            inputComponent={(props) => (
-              <Input
-                {...props}
-                className="shad-input border-0"
-                disabled={field.disabled}
-              />
-            )}
           />
         </FormControl>
       );
