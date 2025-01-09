@@ -21,6 +21,12 @@ import { E164Number } from "libphonenumber-js/core";
 import ReactDatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
+import {
+  Select,
+  SelectContent,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
 
 const RenderField = ({
   field,
@@ -137,21 +143,21 @@ const RenderField = ({
           </FormControl>
         </div>
       );
-    // case FormFieldType.SELECT:
-    //   return (
-    //     <FormControl>
-    //       <Select onValueChange={field.onChange} defaultValue={field.value}>
-    //         <FormControl>
-    //           <SelectTrigger className="shad-select-trigger">
-    //             <SelectValue placeholder={props.placeholder} />
-    //           </SelectTrigger>
-    //         </FormControl>
-    //         <SelectContent className="shad-select-content">
-    //           {props.children}
-    //         </SelectContent>
-    //       </Select>
-    //     </FormControl>
-    //   );
+    case FormFieldType.SELECT:
+      return (
+        <FormControl>
+          <Select onValueChange={field.onChange} defaultValue={field.value}>
+            <FormControl>
+              <SelectTrigger className="shad-select-trigger">
+                <SelectValue placeholder={props.placeholder} />
+              </SelectTrigger>
+            </FormControl>
+            <SelectContent className="shad-select-content">
+              {props.children}
+            </SelectContent>
+          </Select>
+        </FormControl>
+      );
     case FormFieldType.SKELETON:
       return props.renderSkeleton ? props.renderSkeleton(field) : null;
     default:

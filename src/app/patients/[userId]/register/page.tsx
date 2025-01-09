@@ -22,7 +22,9 @@ export default async function Register({ params }) {
 
           <RegisterForm user={user} />
 
-          <p className="copyright py-12">© 2024 CarePluse</p>
+          <p className="copyright py-12">
+            &copy; {new Date().getFullYear()} CarePluse
+          </p>
         </div>
       </section>
 

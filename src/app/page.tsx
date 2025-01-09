@@ -19,7 +19,7 @@ export default function Home() {
           <PatientForm />
           <div className="text-14-regular mt-20 flex justify-between">
             <p className="text-dark-600 justify-items-end xl:text-left">
-              &copy; 2021 Care Pulse.
+              &copy; {new Date().getFullYear()} Care Pulse.
             </p>
             <Link className="text-green-500" href="/?admin=true">
               Admin
