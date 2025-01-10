@@ -4,6 +4,8 @@
 
 CarePulse is a doctor booking app built using a modern tech stack to ensure a seamless and efficient user experience. Below are the details of the technologies used and the reasons for choosing them:
 
+[![CarePulse Demo](cover.png)](https://care-pulse-nine-mu.vercel.app/)
+
 ## Tech Stack
 
 ### Next.js
