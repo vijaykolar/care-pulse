@@ -17,7 +17,7 @@ import {
   InputOTPSeparator,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
-import { encryptKey } from "@/lib/utils";
+import { decryptKey, encryptKey } from "@/lib/utils";
 
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
@@ -36,9 +36,11 @@ export const PasskeyModal = () => {
       : null;
 
   useEffect(() => {
+    const accessKey = encryptedPasskey && decryptKey(encryptedPasskey);
+
     if (
       path.includes("admin") &&
-      passkey === process.env.NEXT_PUBLIC_ADMIN_PASSKEY
+      accessKey === process.env.NEXT_PUBLIC_ADMIN_PASSKEY
     ) {
       setOpen(true);
       router.push("/admin");

@@ -7,7 +7,6 @@ export default async function Home({ searchParams }) {
   const { admin } = await searchParams;
 
   const isAdmin = admin === "true";
-  console.log(isAdmin);
 
   return (
     <div className="flex h-screen max-h-screen">
