@@ -176,23 +176,26 @@ export const AppointmentForm = ({
                 type === "create" && "xl:flex-row"
               }`}
             >
-              <CustomFormField
-                fieldType={FormFieldType.TEXTAREA}
-                control={form.control}
-                name="reason"
-                label="Appointment reason"
-                placeholder="Annual montly check-up"
-                disabled={type === "schedule"}
-              />
-
-              <CustomFormField
-                fieldType={FormFieldType.TEXTAREA}
-                control={form.control}
-                name="note"
-                label="Comments/notes"
-                placeholder="Prefer afternoon appointments, if possible"
-                disabled={type === "schedule"}
-              />
+              <div className="flex-1">
+                <CustomFormField
+                  fieldType={FormFieldType.TEXTAREA}
+                  control={form.control}
+                  name="reason"
+                  label="Appointment reason"
+                  placeholder="Annual montly check-up"
+                  disabled={type === "schedule"}
+                />
+              </div>
+              <div className="flex-1">
+                <CustomFormField
+                  fieldType={FormFieldType.TEXTAREA}
+                  control={form.control}
+                  name="note"
+                  label="Comments/notes"
+                  placeholder="Prefer afternoon appointments, if possible"
+                  disabled={type === "schedule"}
+                />
+              </div>
             </div>
           </>
         )}
