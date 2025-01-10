@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CarePulse
 
-## Getting Started
+![CarePulse Cover](cover.png)
 
-First, run the development server:
+CarePulse is a doctor booking app built using a modern tech stack to ensure a seamless and efficient user experience. Below are the details of the technologies used and the reasons for choosing them:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Tech Stack
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Next.js
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Next.js is a powerful React framework that enables server-side rendering and static site generation. It provides a great developer experience with features like automatic code splitting, optimized performance, and easy API routes.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### ShadCN
 
-## Learn More
+ShadCN is a component library that offers a set of reusable and customizable components. It helps in building consistent and visually appealing user interfaces quickly.
 
-To learn more about Next.js, take a look at the following resources:
+### Tailwind CSS
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Tailwind CSS is a utility-first CSS framework that allows for rapid UI development. It provides low-level utility classes that enable developers to build custom designs without writing custom CSS.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Appwrite
 
-## Deploy on Vercel
+Appwrite is an open-source backend server that provides authentication, database, storage, and more. It simplifies backend development and allows for quick integration of essential backend services.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Twilio
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Twilio is a cloud communications platform that enables sending and receiving messages, making phone calls, and more. It is used in CarePulse for sending appointment confirmations and reminders to users.
+
+## UI Design
+
+### Figma
+
+Figma is a collaborative interface design tool that allows for real-time collaboration and prototyping. The UI for CarePulse was designed in Figma to ensure a pixel-perfect design that meets user needs and expectations.
+
+## Demo
+
+You can check out the live demo of CarePulse hosted on Vercel: [CarePulse Demo](https://care-pulse-nine-mu.vercel.app/)
+
+## Conclusion
+
+CarePulse leverages these technologies to provide a robust, scalable, and user-friendly doctor booking app. The combination of Next.js, ShadCN, Tailwind CSS, Appwrite, and Twilio ensures a seamless experience from UI design to backend functionality.
