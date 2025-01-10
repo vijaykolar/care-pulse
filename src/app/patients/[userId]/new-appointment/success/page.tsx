@@ -8,7 +8,7 @@ import { formatDateTime } from "@/lib/utils";
 import { Doctors } from "../../../../../../constants";
 import { getAppointment } from "@/lib/actions/appointment.actions";
 
-const RequestSuccess = async ({ searchParams, params }: SearchParamProps) => {
+const RequestSuccess = async ({ searchParams, params }) => {
   const { appointmentId } = (await searchParams) || "";
   if (typeof appointmentId !== "string") {
     throw new Error("Invalid appointment ID");
