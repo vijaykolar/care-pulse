@@ -41,11 +41,11 @@ export const AppointmentForm = ({
   const form = useForm<z.infer<typeof AppointmentFormValidation>>({
     resolver: zodResolver(AppointmentFormValidation),
     defaultValues: {
-      primaryPhysician: appointment ? appointment?.primaryPhysician : "",
+      primaryPhysician: appointment?.primaryPhysician || "",
       schedule: appointment
         ? new Date(appointment?.schedule!)
         : new Date(Date.now()),
-      reason: appointment ? appointment.reason : "",
+      reason: appointment?.reason || "",
       note: appointment?.note || "",
       cancellationReason: appointment?.cancellationReason || "",
     },
@@ -122,7 +122,7 @@ export const AppointmentForm = ({
       buttonLabel = "Schedule Appointment";
       break;
     default:
-      buttonLabel = "Submit Apppointment";
+      buttonLabel = "Submit Appointment";
   }
 
   return (
@@ -182,7 +182,7 @@ export const AppointmentForm = ({
                   control={form.control}
                   name="reason"
                   label="Appointment reason"
-                  placeholder="Annual montly check-up"
+                  placeholder="Annual check-up"
                   disabled={type === "schedule"}
                 />
               </div>

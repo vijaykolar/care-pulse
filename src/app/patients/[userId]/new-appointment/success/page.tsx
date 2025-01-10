@@ -1,9 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-
 import { Button } from "@/components/ui/button";
-
-// import { getAppointment } from "@/lib/actions/appointment.actions";
 import { formatDateTime } from "@/lib/utils";
 import { Doctors } from "../../../../../../constants";
 import { getAppointment } from "@/lib/actions/appointment.actions";
@@ -77,7 +74,7 @@ const RequestSuccess = async ({ searchParams, params }) => {
           </Link>
         </Button>
 
-        <p className="copyright">© 2024 CarePluse</p>
+        <p className="copyright">© {new Date().getFullYear()} CarePluse</p>
       </div>
     </div>
   );
