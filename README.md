@@ -1,10 +1,8 @@
 # CarePulse
 
-[![CarePulse Demo](https://github.com/vijaykolar/care-pulse/blob/master/Cover.png)](https://care-pulse-nine-mu.vercel.app/)
+[![CarePulse Demo](https://github.com/vijaykolar/care-pulse/blob/master/image.png)](https://care-pulse-nine-mu.vercel.app/)
 
 CarePulse is a doctor booking app built using a modern tech stack to ensure a seamless and efficient user experience. Below are the details of the technologies used and the reasons for choosing them:
-
-[![CarePulse Demo](cover.png)](https://care-pulse-nine-mu.vercel.app/)
 
 ## Tech Stack
 
@@ -26,7 +24,7 @@ Appwrite is an open-source backend server that provides authentication, database
 
 ### Twilio
 
-Twilio is a cloud communications platform that enables sending and receiving messages, making phone calls, and more. It is used in CarePulse for sending appointment confirmations and reminders to users.
+Twilio is a cloud communications platform that enables sending and receiving messages, making phone calls, and more. It is used in CarePulse for sending appointment confirmations to users.
 
 ## UI Design
 
