@@ -24,7 +24,7 @@ Appwrite is an open-source backend server that provides authentication, database
 
 ### Twilio
 
-Twilio is a cloud communications platform that enables sending and receiving messages, making phone calls, and more. It is used in CarePulse for sending appointment confirmations and reminders to users.
+Twilio is a cloud communications platform that enables sending and receiving messages, making phone calls, and more. It is used in CarePulse for sending appointment confirmations to users.
 
 ## UI Design
 
