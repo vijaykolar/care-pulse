@@ -1,6 +1,6 @@
 # CarePulse
 
-![CarePulse Cover](https://github.com/vijaykolar/care-pulse/blob/master/Cover.png)
+[![CarePulse Demo](https://github.com/vijaykolar/care-pulse/blob/master/Cover.png)](https://care-pulse-nine-mu.vercel.app/)
 
 CarePulse is a doctor booking app built using a modern tech stack to ensure a seamless and efficient user experience. Below are the details of the technologies used and the reasons for choosing them:
 
